@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORON</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            text-align: center;
+            margin: 20px 0;
+            background: linear-gradient(90deg, #2F3C7E, #FBEAEB);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #2F3C7E;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus, form textarea:focus {
+            border-color: #6FA3EF;
+            outline: none;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2F3C7E;
+            color: #ffffff;
+        }
+
+        a {
+            color: #6FA3EF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2F3C7E;
+            text-decoration: underline;
+        }
+
+        #comments-section {
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+
+        #commentsList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #commentsList li {
+            border: 1px solid #6FA3EF;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background-color: #e7f1ff;
+            transition: transform 0.3s ease;
+        }
+
+        #commentsList li:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 600px) {
+            header, section {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 1000;
+        }
+
+        .popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .animated-explanation {
+            font-size: 1.1em;
+            color: #666;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .idea-image {
+            width: 69%;
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            display: grid;
+            
+        }
+
+        #collage {
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 40px; 
+            margin-top: 40px;
+        }
+
+        .collage-image {
+            width: calc(31% - 10px); 
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .collage-image:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CROWD SOURCING</h1>
+</header>
+
+<main>
+    <section id="idea-form">
+        
+        <div id="collage">
+            <img src="https://media.istockphoto.com/id/1154359924/photo/social-networking-concept-communication-network.jpg?s=612x612&w=0&k=20&c=6VjBtIjlmIDRMS_c3T_eeWCGMgjfi-1nCxd9-TrzJ-4=" alt="Image 1" class="collage-image">
+            <img src="https://media.istockphoto.com/id/605764096/vector/crowd-sourcing-new-ideas-via-social-network-brainstorming.jpg?s=612x612&w=0&k=20&c=0tYSPuAvaHDRl7497HFHZgwLlU_zW3lHtAx_Vg1AmNE=" alt="Image 2" class="collage-image">
+            <img src="https://media.istockphoto.com/id/866608444/photo/human-crowd-forming-a-big-speech-bubble-communication-and-social-media-concept.jpg?s=612x612&w=0&k=20&c=aARsQ7wt-aLm19azVbFCnz3DP7XRFQ38mq25UftPQbk=" alt="Image 1" class="collage-image">
+            
+          
+        </div>
+        <h2>Submit Your Idea</h2>
+        
+        <form id="submissionForm">
+            <label for="title">Idea Title</label>
+            <input type="text" id="title" required>
+            <label for="description">Description</label>
+            <textarea id="description" required></textarea>
+            <label for="link">Related Link (URL)</label>
+            <input type="url" id="link" required>
+            <button type="button" onclick="submitIdea()">Submit</button>
+        </form>
+    </section>
+
+    <section id="ideas-gallery">
+        <h2>Ideas</h2>
+        <table id="ideasTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody id="ideasList"></tbody>
+        </table>
+        <a href="#comments-section">Leave a Comment</a>
+    </section>
+
+    <section id="comments-section">
+        <h2>Comments</h2>
+        <form id="commentForm">
+            <label for="comment">Your Comment</label>
+            <textarea id="comment" required></textarea>
+            <button type="button" onclick="submitComment()">Submit Comment</button>
+        </form>
+        <h3>All Comments</h3>
+        <ul id="commentsList"></ul>
+        <p class="animated-explanation">CROWD SOURCING
+           is a method of obtaining information, ideas, or services by soliciting contributions from a large group of people, typically through the internet. It harnesses the collective intelligence and skills of the public, often leading to innovative solutions, diverse perspectives, and cost-effective results.
+
+Common applications include:
+
+Problem Solving: Companies or organizations pose challenges to the public and reward contributions.
+Creative Input: Platforms like 99designs allow designers to submit work for client projects.
+Data Collection: Wikipedia is a prime example, where volunteers contribute knowledge and edit articles.
+Funding: Crowdfunding platforms like Kickstarter enable entrepreneurs to raise money for projects from individual backers.
+        </p>
+    </section>
+
+    <div id="popup" class="popup"></div> 
+</main>
+
+<script>
+    const ideas = [];
+    const comments = [];
+
+    function showPopup(message) {
+        const popup = document.getElementById('popup');
+        popup.innerText = message;
+        popup.classList.add('show');
+        
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 3000);
+    }
+
+    function submitIdea() {
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const link = document.getElementById('link').value;
+
+        if (title && description && link) {
+            const newIdea = { title, description, link };
+            ideas.push(newIdea);
+            document.getElementById('submissionForm').reset();
+            showPopup('Idea submitted successfully!');
+            displayIdeas();
+        } else {
+            showPopup('Please fill out all fields.');
+        }
+    }
+
+    function displayIdeas() {
+        const ideasList = document.getElementById('ideasList');
+        ideasList.innerHTML = '';
+
+        ideas.forEach(idea => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${idea.title}</td>
+                             <td>${idea.description}</td>
+                             <td><a href="${idea.link}" target="_blank">View More</a></td>`;
+            ideasList.appendChild(row);
+        });
+    }
+
+    function submitComment() {
+        const comment = document.getElementById('comment').value;
+
+        if (comment) {
+            comments.push(comment);
+            document.getElementById('commentForm').reset();
+            showPopup('Comment submitted successfully!');
+            displayComments();
+        } else {
+            showPopup('Please enter a comment.');
+        }
+    }
+
+    function displayComments() {
+        const commentsList = document.getElementById('commentsList');
+        commentsList.innerHTML = '';
+
+        comments.forEach(comment => {
+            const listItem = document.createElement('li');
+            listItem.textContent = comment;
+            commentsList.appendChild(listItem);
+        });
+    }
+</script>
+
+</body>
+</html>
